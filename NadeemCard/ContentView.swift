@@ -24,21 +24,12 @@ struct ContentView: View {
                     .font(Font.custom("Pacifico-Regular", size: 45))
                     .fontWeight(.heavy)
                     .foregroundColor(.white)
-                Text("iOS Developer")
+                Text("Programmer Analyst")
                     .foregroundColor(.white)
                     .font(.system(size: 25))
                 Divider()
-                Capsule()
-                    .fill(Color.white)
-                    .padding(10)
-                    .frame(height: 60, alignment: .center)
-                    .overlay(
-                        HStack {
-                            Image(systemName: "phone.fill")
-                                .foregroundColor(Color(red: 0.93, green: 0.51, blue: 0.23))
-                            Text("+1 123.456.7890")
-                                .font(.title)
-                    })
+                Contact(type: "phone.fill", content: "+1 123456789")
+                Contact(type: "envelope.fill", content: "nadeem_ansari64@outlook.com")
             }
         }
     }
@@ -47,5 +38,22 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+    }
+}
+
+struct Contact: View {
+    var type: String
+    var content: String
+    var body: some View {
+        Capsule()
+            .fill(Color.white)
+            .padding(10)
+            .frame(height: 60, alignment: .center)
+            .overlay(
+                HStack {
+                    Image(systemName: type)
+                        .foregroundColor(Color(red: 0.93, green: 0.51, blue: 0.23))
+                    Text(content)
+            })
     }
 }
